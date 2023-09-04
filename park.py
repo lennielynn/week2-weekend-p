@@ -13,7 +13,8 @@ class ParkingGarage:
     def payForTicket(self):
         pay_ticket = input ("please enter payment amouunt and enter [purchase] ").lower()
         if pay_ticket == 'purchase':
-            self.current_ticket = self.current_ticket["Paid"] = "True"
+            self.current_ticket["Paid"] = True
+            return self.current_ticket
     
     def takeTicket(self):
        self.tickets = self.tickets - 1
@@ -22,12 +23,14 @@ class ParkingGarage:
        print(f'There are {self.parking_spaces} parking spaces remaining')
        
     def leaveGarage(self):
-        if self.current_ticket.values() is True:
-            self.tickets = self.tickets + 1
-            self.parking_spaces = self.parking_spaces + 1
-            print("Thank you, come again!")
-        elif self.current_ticket.values() is False:
+        if self.current_ticket == False:
             my_ticket.payForTicket()
+            
+        elif self.current_ticket.values() is True:
+          self.tickets = self.tickets + 1
+          self.parking_spaces = self.parking_spaces + 1
+          print(f'There are {self.parking_spaces} parking spaces remaining')
+        # print("Thank you, come again!")
     
 def driver():
         while True:
